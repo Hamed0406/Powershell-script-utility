@@ -1,5 +1,7 @@
 # Active Directory Group Information Script Documentation
 
+## You need to have at least read only privilege on AD/Domain.
+
 This PowerShell script is designed to retrieve and optionally export detailed information about a specified Active Directory (AD) group. It demonstrates good practices in script modularity and parameterization, making it easily maintainable and extendable.
 
 ## Script Overview
