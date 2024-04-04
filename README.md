@@ -23,7 +23,7 @@ Welcome to a curated collection of PowerShell scripts designed for system admini
 ### 📚 Get_info_about_AD_group
 - **Purpose**: Gathers detailed information on Active Directory groups, including memberships, properties, and permissions, facilitating group management and security auditing.
 
-### 📁 Retrieve Server Group Memberships
+### 📁 Get_info_groups_server_blong
 - **Purpose**: Retrieves detailed information about all the groups a server belongs to, including nested groups, within an Active Directory (AD) environment. This script is essential for administrators who need to audit or review the group memberships of servers, helping in understanding the structure of nested group memberships. Requires the server's name as a mandatory input parameter.
 
 ## ✅ Getting Started
