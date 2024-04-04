@@ -1,54 +1,58 @@
-﻿
-
-
-function Get-BlobItems{
+﻿function Get-BlobItems{
     param (
+        # The URL to the Azure Blob Storage container, including the SAS token
         $URL
     )
     
+    # Splitting the URL to separate the base URI from the SAS token
     $uri = $URL.split('?')[0]
     $sas = $URL.split('?')[1]
     
+    # Constructing a new URL to list the contents of the container
     $newurl = $uri + "?restype=container&comp=list&" + $sas 
     
-    #Invoke REST API
+    # Invoking the REST API to list the contents of the container
     $body = Invoke-RestMethod -uri $newurl
 
-    #cleanup answer and convert body to XML
+    # Cleaning up the response and converting the body to XML format for easier parsing
     $xml = [xml]$body.Substring($body.IndexOf('<'))
 
-    #use only the relative Path from the returned objects
+    # Extracting the relative paths of the items in the container
     $files = $xml.ChildNodes.Blobs.Blob.Name
 
-    #regenerate the download URL incliding the SAS token
+    # Regenerating the download URLs for each item, including the SAS token
     $files | ForEach-Object { $uri + "/" + $_ + "?" + $sas }    
 }
 
-
 function Invoke-BlobItems {
     param (
+        # The URL to the Azure Blob Storage container, including the SAS token. This parameter is mandatory.
         [Parameter(Mandatory)]
         [string]$URL,
+        # The local path where the blob items will be downloaded. Defaults to "D:\DownloadfromBlob".
         [string]$Path = ("D:\DownloadfromBlob")
     )
     
+    # Splitting the URL to separate the base URI from the SAS token
     $uri = $URL.split('?')[0]
     $sas = $URL.split('?')[1]
 
+    # Constructing a new URL to list the contents of the container
     $newurl = $uri + "?restype=container&comp=list&" + $sas 
     
-    #Invoke REST API
+    # Invoking the REST API to list the contents of the container
     $body = Invoke-RestMethod -uri $newurl
 
-    #cleanup answer and convert body to XML
+    # Cleaning up the response and converting the body to XML format for easier parsing
     $xml = [xml]$body.Substring($body.IndexOf('<'))
 
-    #use only the relative Path from the returned objects
+    # Extracting the relative paths of the items in the container
     $files = $xml.ChildNodes.Blobs.Blob.Name
 
-    #create folder structure and download files
-    $files | ForEach-Object { $_; New-Item (Join-Path $Path (Split-Path $_)) -ItemType Directory -ea SilentlyContinue | Out-Null
+    # Creating the folder structure as needed and downloading the files
+    $files | ForEach-Object {
+        $_; 
+        New-Item (Join-Path $Path (Split-Path $_)) -ItemType Directory -ea SilentlyContinue | Out-Null
         (New-Object System.Net.WebClient).DownloadFile($uri + "/" + $_ + "?" + $sas, (Join-Path $Path $_))
-     }
+    }
 }
-
