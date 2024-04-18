@@ -7,8 +7,8 @@
 Import-Module SqlServer
 
 # Specify the SQL Server instance and the name of the SQL Server Agent job to be started and monitored.
-$sqlInstance = "YourSqlServerInstance"  # Example: 'localhost', 'YourServer\YourInstance'
-$jobName = "YourJobName"  # The exact name of the SQL Server Agent job
+$sqlInstance = "YourServer\YourInstance"  # Example: 'localhost', 'YourServer\YourInstance'
+$jobName = "jobName"  # The exact name of the SQL Server Agent job
 
 # Establish a connection to the specified SQL Server instance.
 $server = New-Object Microsoft.SqlServer.Management.Smo.Server($sqlInstance)

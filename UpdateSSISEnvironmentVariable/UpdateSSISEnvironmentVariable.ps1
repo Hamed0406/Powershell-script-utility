@@ -7,13 +7,13 @@
 Import-Module SqlServer
 
 # Define the SQL Server instance where the SSISDB catalog resides. Update the placeholders to match your environment.
-$sqlInstance = "YourSqlServerInstance"  # Example: 'localhost' or 'YourServer\YourInstance'
+$sqlInstance = "YourServer\YourInstance"  # Example: 'localhost' or 'YourServer\YourInstance'
 $database = "SSISDB"  # The default database for Integration Services
 
 # Specify the environment and the variable within the SSISDB catalog you wish to update.
-$environmentName = "YourEnvironmentName"  # The name of the SSIS environment
-$variableName = "YourVariableName"  # The name of the variable to update
-$newValue = "NewVariableValue"  # The new value for the variable. Ensure correct formatting, especially for string values.
+$environmentName = "environmentName"  # The name of the SSIS environment
+$variableName = "variableName"  # The name of the variable to update
+$newValue = "-4"  # The new value for the variable. Ensure correct formatting, especially for string values.
 
 # Construct the SQL query to update the environment variable's value.
 # This query finds the environment by name, then updates the specified variable within that environment.

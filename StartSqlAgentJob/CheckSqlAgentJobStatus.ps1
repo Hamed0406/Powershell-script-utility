@@ -1,4 +1,4 @@
-﻿# CheckSqlAgentJobStatus.ps1
+﻿enter-pssession# CheckSqlAgentJobStatus.ps1
 # Description: This script checks the status of a specified SQL Server Agent job on a given SQL Server instance.
 # It reports the job's current running status and the outcome of its last execution, providing insights into
 # job performance and troubleshooting issues.
@@ -9,8 +9,8 @@ Import-Module SqlServer
 
 # Define the SQL Server instance where the job is scheduled and the name of the job to check.
 # Update these placeholder values to reflect your specific SQL Server environment and job name.
-$sqlInstance = "YourSqlServerInstance"  # Example: 'localhost', 'YourServer\YourInstance'
-$jobName = "YourJobName"  # The name of the SQL Server Agent job to check
+$sqlInstance = "YourServer\YourInstance"  # Example: 'localhost', 'YourServer\YourInstance'
+$jobName = "jobName"  # The name of the SQL Server Agent job to check
 
 # Establish a connection to the specified SQL Server instance by creating a Server object.
 # This object provides access to the server and its properties, including the SQL Server Agent jobs.

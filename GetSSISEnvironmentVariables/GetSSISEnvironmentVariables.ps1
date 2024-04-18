@@ -11,11 +11,11 @@
 Import-Module SqlServer
 
 # Define your SQL Server instance and the SSISDB catalog. Replace placeholders with your actual server instance and environment name.
-$sqlInstance = "YourSqlServerInstance"  # e.g., 'localhost', 'YourServer\YourInstance'
+$sqlInstance = "YourServer\YourInstance"  # e.g., 'localhost', 'YourServer\YourInstance'
 $database = "SSISDB"  # Default database for SSIS
 
 # Specify the name of the environment within the SSISDB catalog from which to retrieve variables.
-$environmentName = "YourEnvironmentName"
+$environmentName = "production"
 
 # SQL query to retrieve environment variables from the specified environment.
 # Adjust the query if your setup differs from the standard SSISDB structure.

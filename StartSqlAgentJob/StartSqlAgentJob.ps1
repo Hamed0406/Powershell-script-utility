@@ -9,8 +9,8 @@ Import-Module SqlServer
 
 # Specify the SQL Server instance where the job resides, and the name of the job you wish to start.
 # Replace the placeholders with your actual SQL Server instance name and job name.
-$sqlInstance = "YourSqlServerInstance"  # Example formats: 'localhost', 'YourServer\YourInstance'
-$jobName = "YourJobName"  # The exact name of the SQL Server Agent job to be started
+$sqlInstance = "YourServer\YourInstance"  # Example formats: 'localhost', 'YourServer\YourInstance'
+$jobName = "jobName"  # The exact name of the SQL Server Agent job to be started
 
 # Instantiate a Server object to connect to the specified SQL Server instance.
 # This object provides access to the server's properties and methods, including SQL Server Agent jobs.
